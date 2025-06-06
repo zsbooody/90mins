@@ -3,7 +3,7 @@ const CACHE_NAME = '90min-clock-v1';
 
 // 需要缓存的资源列表
 const urlsToCache = [
-  '/',
+  'index.html',
   'index.html',
   'style.css',
   'script.js',
@@ -32,6 +32,15 @@ self.addEventListener('activate', event => {
 
 // 拦截网络请求
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+  // 处理根路径请求为index.html
+  if (requestUrl.pathname === '/') {
+    event.respondWith(
+      caches.match('index.html')
+        .then(response => response || fetch(event.request))
+    );
+    return;
+  }
   event.respondWith(
     caches.match(event.request)
       .then(response => response || fetch(event.request))
