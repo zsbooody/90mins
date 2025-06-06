@@ -1,0 +1,127 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+.clock-container {
+  text-align: center;
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #64ffda;
+  letter-spacing: 1px;
+}
+
+.watch-face {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 2rem;
+}
+
+#cycle-clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  z-index: 10;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.7);
+}
+
+.progress-rings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 环形进度条容器 */
+.progress-ring {
+  position: relative;
+}
+
+/* 深色底纹轨道 */
+.progress-ring .track {
+  stroke: rgba(30, 30, 40, 0.8);
+  stroke-width: 16; /* 加粗底纹轨道 */
+  stroke-linecap: round;
+  fill: none;
+  filter: blur(1px);
+}
+
+/* 进度条样式 */
+.progress-ring .progress {
+  stroke-width: 14; /* 加粗进度条 */
+  stroke-linecap: round; /* 圆角线头 */
+  fill: none;
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+
+/* 改用固定颜色 */
+.hours.progress {
+  stroke: #ff2d95; /* 粉红色 */
+}
+
+.minutes.progress {
+  stroke: #64ffda; /* 青色 */
+}
+
+.seconds.progress {
+  stroke: #00ffea; /* 亮蓝色 */
+}
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+
+/* 删除重复的环形进度条样式设置 */
+/* 小时环样式 */
+.hours {
+  /* 删除以下两行 */
+  /* stroke-dasharray: 565; */
+  /* stroke-dashoffset: 565; */
+  filter: drop-shadow(0 0 5px rgba(255, 45, 149, 0.8));
+}
+
+/* 分钟环样式 */
+.minutes {
+  /* 删除以下两行 */
+  /* stroke-dasharray: 691; */
+  /* stroke-dashoffset: 691; */
+  filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.8));
+}
+
+/* 秒环样式 */
+.seconds {
+  /* 删除以下两行 */
+  /* stroke-dasharray: 817; */
+  /* stroke-dashoffset: 817; */
+  filter: drop-shadow(0 0 5px rgba(0, 255, 234, 0.8));
+}
+
+.description {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+#cycle-count {
+  font-weight: bold;
+  color: #64ffda;
+}

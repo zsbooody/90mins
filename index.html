@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90分钟周期时钟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="clock-container">
+    <h1>90分钟制时钟</h1>
+    
+    <div class="watch-face">
+      <!-- 时间数字显示 -->
+      <div id="cycle-clock">00:00:00</div>
+      
+      <!-- 环形进度条容器 -->
+      <div class="progress-rings">
+        <!-- 整合所有环到同一个SVG容器 -->
+        <svg class="progress-ring" width="300" height="300">
+          <!-- 小时环 (最外圈) -->
+          <circle class="track hours" stroke="rgba(30,30,40,0.8)" stroke-width="16" fill="transparent" r="90" cx="150" cy="150"/>
+          <circle id="hours-progress" class="progress hours" stroke="#ff2d95" stroke-width="14" fill="transparent" r="90" cx="150" cy="150"/>
+          
+          <!-- 分钟环 (中间圈) -->
+          <circle class="track minutes" stroke="rgba(30,30,40,0.8)" stroke-width="16" fill="transparent" r="110" cx="150" cy="150"/>
+          <circle id="minutes-progress" class="progress minutes" stroke="#64ffda" stroke-width="14" fill="transparent" r="110" cx="150" cy="150"/>
+          
+          <!-- 秒环 (最内圈) -->
+          <circle class="track seconds" stroke="rgba(30,30,40,0.8)" stroke-width="16" fill="transparent" r="130" cx="150" cy="150"/>
+          <circle id="seconds-progress" class="progress seconds" stroke="#00ffea" stroke-width="14" fill="transparent" r="130" cx="150" cy="150"/>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="description">
+      <p>1小时 = 90分钟 | 1分钟 = 60秒</p>
+      <p>当前小时数: <span id="cycle-count">0</span></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
