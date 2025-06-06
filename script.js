@@ -93,3 +93,41 @@ updateCycleClock();
 // 删除 setInterval 避免冲突
 // 每秒更新一次
 // setInterval(updateCycleClock, 1000);
+
+// 添加PWA安装功能
+let deferredPrompt;
+const installBtn = document.createElement('button');
+installBtn.id = 'install-btn';
+installBtn.textContent = '安装应用';
+installBtn.className = 'install-button';
+document.querySelector('.clock-container').appendChild(installBtn);
+
+// 监听安装提示事件
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+// 处理安装按钮点击
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`用户安装结果: ${outcome}`);
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  }
+});
+
+// 检测是否已安装
+window.addEventListener('appinstalled', () => {
+  console.log('应用已安装');
+  installBtn.style.display = 'none';
+});
+
+// 初始隐藏安装按钮
+installBtn.style.display = 'none';
+// 删除 setInterval 避免冲突
+// 每秒更新一次
+// setInterval(updateCycleClock, 1000);
