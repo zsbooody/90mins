@@ -15,7 +15,16 @@ const urlsToCache = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+      .then(async cache => {
+        // 逐个缓存文件，避免addAll原子失败
+        for (const url of urlsToCache) {
+          try {
+            await cache.add(url);
+          } catch (error) {
+            console.log(`缓存${url}失败:`, error);
+          }
+        }
+      })
   );
 });
 
