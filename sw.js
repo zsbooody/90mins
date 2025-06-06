@@ -1,5 +1,5 @@
 // 缓存名称
-const CACHE_NAME = '90min-clock-v2';
+const CACHE_NAME = '90min-clock-v3';
 
 // 需要缓存的资源列表
 const urlsToCache = [

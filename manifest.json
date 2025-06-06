@@ -2,7 +2,7 @@
   "name": "90分钟周期时钟",
   "short_name": "90min时钟",
   "description": "90分钟制时间显示应用",
-  "start_url": "/",
+  "start_url": "/90mins/",
   "display": "standalone",
   "background_color": "#1e1e28",
   "theme_color": "#1e1e28",
